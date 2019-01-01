@@ -1,8 +1,4 @@
-#include "action_layer.h"
-#include "debug.h"
-#include "ergodox_ez.h"
-#include "keymap_german.h"
-#include "keymap_nordic.h"
+#include QMK_KEYBOARD_H
 #include "version.h"
 
 enum custom_keycodes {
