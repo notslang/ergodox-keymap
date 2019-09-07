@@ -149,26 +149,18 @@ void matrix_init_user(void) {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-  // dynamically generate these.
-  case EPRM:
-    if (record->event.pressed) {
-      eeconfig_init();
+  if (record->event.pressed) {
+    switch (keycode) {
+      case EPRM:
+        eeconfig_init();
+        return false;
+      case VRSN:
+        SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+        return false;
+      case RGB_SLD:
+        rgblight_mode(1);
+        return false;
     }
-    return false;
-    break;
-  case VRSN:
-    if (record->event.pressed) {
-      SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-    }
-    return false;
-    break;
-  case RGB_SLD:
-    if (record->event.pressed) {
-      rgblight_mode(1);
-    }
-    return false;
-    break;
   }
   return true;
 }
