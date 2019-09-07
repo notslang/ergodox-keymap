@@ -165,6 +165,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+// Runs whenever there is a layer state change.
 uint32_t layer_state_set_user(uint32_t state) {
 
   uint8_t layer = biton32(state);
